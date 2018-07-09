@@ -2,7 +2,7 @@
   "name": "gitbook-plugin-theme-sina_design",
   "description": "sina design_book",
   "main": "./index.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "gitbook": ">=3.0.0"
   },
@@ -20,14 +20,11 @@
     "mousetrap": "1.6.0",
     "uglify-js": "2.7.3"
   },
-  "scripts": {
-    "prepublish": "./src/build.sh"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GitbookIO/theme-default.git"
+    "url": "https://github.com/zxflslzyx/gitbook-plugin-theme-sina_design.git"
   },
-  "author": "FriendCode Inc. <contact@gitbook.com>",
+  "author": "876910486@qq.com",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/GitbookIO/theme-default/issues"
@@ -35,7 +32,7 @@
   "contributors": [
     {
       "name": "Samy Pessé",
-      "email": "samy@gitbook.com"
+      "email": "876910486@qq.com"
     }
   ],
   "gitbook": {

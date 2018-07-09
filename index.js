@@ -9,14 +9,7 @@ module.exports = {
 		'page:before': function(page) {
 
 			console.log("*************************************");
-			console.log("*************************************");
-			console.log("*************************************");
-			console.log("*************************************");
-
-			console.log(this.options);
-
-			console.log("*************************************");
-			console.log("*************************************");
+			console.log("# Info: running sina_design .........");
 			console.log("*************************************");
 
 			var  _copy = 'powered by Gitbook'
@@ -29,7 +22,6 @@ module.exports = {
 			
 			page.content  +=  str;
 			return page;
-
 		}
 	},
 	filters: {

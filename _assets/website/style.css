@@ -3962,14 +3962,14 @@ table {
 }
 
 #book-search-input {
-	padding: 6px;
-	background: 0 0;
-	transition: top .5s ease;
-	background: #fff;
-	border-bottom: 1px solid rgba(0, 0, 0, .07);
-	border-top: 1px solid rgba(0, 0, 0, .07);
-	margin-bottom: 10px;
-	margin-top: -1px
+    background: 0 0;
+    transition: top .5s ease;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, .07);
+    /* border-top: 1px solid rgba(0, 0, 0, .07); */
+    /* margin-bottom: 10px; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #book-search-input input,
@@ -3981,7 +3981,7 @@ table {
 	box-shadow: none;
 	outline: 0;
 	line-height: 22px;
-	padding: 7px 7px;
+	padding: 5px;
 	color: inherit
 }
 
