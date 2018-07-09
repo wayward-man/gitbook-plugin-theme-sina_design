@@ -3465,7 +3465,9 @@ table {
 }
 
 .book-summary ul.summary li a:hover {
-	text-decoration: underline
+	color: #fff;
+	background:#57a7da;
+	text-decoration: none;
 }
 
 .book-summary ul.summary li a:focus {
@@ -3473,9 +3475,9 @@ table {
 }
 
 .book-summary ul.summary li.active>a {
-	color: #008cff;
-	background: 0 0;
-	text-decoration: none
+	color: #fff;
+	background:#57a7da;
+	text-decoration: none;
 }
 
 .book-summary ul.summary li ul {
