@@ -29,13 +29,23 @@
 {% block body %}
 <div class="book">
 	
+	<!--自定义的头部-->
 	<div class="sinaTop">
 		<div class="left">
 			<aside class="logo"></aside>			
 		</div>
 		<div class="right">
-			<i class="fa fa-search"></i>
-			{% block search_input %}{% endblock %}
+			<div class="sina_searchBox">
+				<i class="fa fa-search"></i>
+				{% block search_input %}{% endblock %}	
+			</div>
+			
+			<div class="nav_wrap">
+				<aside class="nav">首页</aside>
+				<aside class="nav active">设计语言</aside>
+				<aside class="nav">品牌</aside>
+			</div>
+			<aside class="right_login">	</aside>
 		</div>
 	</div>
 	
@@ -53,7 +63,9 @@
         {% block book_body %}
             <div class="body-inner">
                 {% block book_inner %}
-                    {% include "website/header.html" %}
+                
+                	<!--隐藏toggle-->
+                    <!--{% include "website/header.html" %}-->
 
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
@@ -69,6 +81,7 @@
                 {% endblock %}
             </div>
 
+			<!--上下页的地方-->
             {% block book_navigation %}
                 {% if page.previous and page.previous.path %}
                 <a href="{{ page.previous.path|resolveFile }}{{ page.previous.anchor }}" class="navigation navigation-prev {% if not (page.next and page.next.path) %}navigation-unique{% endif %}" aria-label="Previous page: {{ page.previous.title }}">
