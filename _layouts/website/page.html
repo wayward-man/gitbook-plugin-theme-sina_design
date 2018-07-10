@@ -29,34 +29,31 @@
 {% block body %}
 <div class="book">
 	
-	<!--头部-->
-	<header class="sinaTop">
+	<div class="sinaTop">
 		<div class="left">
-			<div class="logo"></div>
+			<aside class="logo"></aside>			
 		</div>
 		<div class="right">
 			{% block search_input %}{% endblock %}
-			{% include "website/header.html" %}
 		</div>
-	</header>
+	</div>
 	
-	<!--中间内容区域-->
-	<section class="sinaBody">
-	    <div class="book-summary">
-	        {% block book_sidebar %}
-	            {% block book_summary %}
-	                <nav role="navigation">
-	                {% include "website/summary.html" %}
-	                </nav>
-	            {% endblock %}
-	        {% endblock %}
-	    </div>
-		
-		
-		<div class="book-body">
+	
+    <div class="book-summary">
+        {% block book_sidebar %}
+            {% block book_summary %}
+                <nav role="navigation">
+                {% include "website/summary.html" %}
+                </nav>
+            {% endblock %}
+        {% endblock %}
+    </div>
+
+    <div class="book-body">
         {% block book_body %}
             <div class="body-inner">
                 {% block book_inner %}
+                    {% include "website/header.html" %}
 
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
@@ -86,11 +83,6 @@
             {% endblock %}
         {% endblock %}
     </div>
-		
-	</section>
-	
-
-    
 
     <script>
         var gitbook = gitbook || [];
