@@ -3462,7 +3462,8 @@ table {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	position: relative
+	position: relative;
+	border-right:3px solid rgba(255,255,255,0);
 }
 
 .book-summary ul.summary li a:hover {
