@@ -11,7 +11,6 @@ var onLoad = window.gitbook || [];
 var gitbook = {
     events:   events,
     page:     page,
-
     // Deprecated
     state:    page.getState(),
 

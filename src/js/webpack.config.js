@@ -1,10 +1,13 @@
 const uglify = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: __dirname + "/theme/index.js",//已多次提及的唯一入口文件
+	entry:{
+      theme:__dirname + "/theme/index.js",//已多次提及的唯一入口文件  
+      gitbook: __dirname + "/core/index.js",//已多次提及的唯一入口文件  
+    },
     output: {
         path: __dirname,//打包后的文件存放的地方
-        filename: "../../_assets/website/theme.js"//打包后输出文件的文件名
+        filename: "../../_assets/website/[name].js"//打包后输出文件的文件名
     },
     devtool: 'eval-source-map',
     devServer: {

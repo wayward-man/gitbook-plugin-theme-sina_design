@@ -8,21 +8,17 @@ var gitbook = window.gitbook;
 
 function init() {
 	
-    // Init sidebar
+    console.log("*******theme entry **********");
     sidebar.init();
-    console.log('sidebar.inited');
 
     // Init keyboard
     keyboard.init();
-    console.log('keyboard.inited');
     
     // Bind dropdown
     dropdown.init();
-    console.log('dropdown.inited');
 
     // Init navigation
     navigation.init();
-    console.log('navigation.inited');
 
     // Add action to toggle sidebar
     toolbar.createButton({
