@@ -23,6 +23,7 @@ function hasChanged(ctx) {
     events.trigger('page.change');
 }
 
+
 /*
     Update current state
 

@@ -17,6 +17,10 @@ function init() {
     $(document).on('click', '.toggle-dropdown', toggleDropdown);
     $(document).on('click', '.dropdown-menu', function(e){ e.stopPropagation(); });
     $(document).on('click', closeDropdown);
+    $(document).on('click','.nav_wrap .nav', function(){
+    	console.log('nav *************');
+    })
+    
 }
 
 module.exports = {

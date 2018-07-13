@@ -121,6 +121,8 @@ var $chapters,
 
 // Set a chapter as active in summary and update state
 function setChapterActive($chapter, hash) {
+	console.log("**********chapter ************")
+	
     // No chapter and no hash means first chapter
     if (!$chapter && !hash) {
         $chapter = $chapters.first();

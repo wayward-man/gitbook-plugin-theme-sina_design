@@ -6,18 +6,24 @@ var gitbook = window.gitbook;
 
 // Toggle sidebar with or withour animation
 function toggleSidebar(_state, animation) {
+	
     if (gitbook.state != null && isOpen() == _state) return;
     if (animation == null) animation = true;
 
     gitbook.state.$book.toggleClass('without-animation', !animation);
     gitbook.state.$book.toggleClass('with-summary', _state);
+    
+    
+    
+    
 
     gitbook.storage.set('sidebar', isOpen());
+    console.log("********************");
+    console.log(gitbook.storage.get('sidebar'));
 }
 
 // Return true if sidebar is open
 function isOpen() {
-	console.log("open 啦啦啦啦啦");
     return gitbook.state.$book.hasClass('with-summary');
 }
 
@@ -30,7 +36,13 @@ function init() {
 
     // Close sidebar after clicking a link on mobile
     $(document).on('click', '.book-summary li.chapter a', function(e) {
+    	console.log("1111111111111111")
         if (platform.isMobile()) toggleSidebar(false, false);
+    });
+    
+    //自己添加的事件
+     $(document).on('click', '.book-summary .nav_wrap .nav', function(e) {
+        console.log("111")
     });
 }
 

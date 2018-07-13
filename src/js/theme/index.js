@@ -3,12 +3,12 @@ var keyboard =   require('./keyboard');
 var navigation = require('./navigation');
 var sidebar =    require('./sidebar');
 var toolbar =    require('./toolbar');
+var sina = require('./sina.js');
 
 var gitbook = window.gitbook;
 
 function init() {
-	
-    console.log("*******theme entry **********");
+
     sidebar.init();
 
     // Init keyboard
@@ -19,6 +19,10 @@ function init() {
 
     // Init navigation
     navigation.init();
+	
+	// Init Sina Event
+	sina.init();
+
 
     // Add action to toggle sidebar
     toolbar.createButton({
