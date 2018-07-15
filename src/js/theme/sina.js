@@ -28,6 +28,9 @@ function hiddenAll(e){
 
 // Bind all dropdown
 function init() {
+	
+	$("a").attr("target","_self");
+	
 	$(document).on('click', '.nav_wrap .nav', tabNav);
 
 	//移动端事件

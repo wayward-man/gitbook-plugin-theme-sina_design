@@ -31,6 +31,9 @@
 	
 	<!--自定义的头部-->
 	<div class="sinaTop">
+		<!--toggle-->
+        {% include "website/header.html" %}
+        
 		<div class="left">
 			<aside class="logo"></aside>			
 		</div>
@@ -41,6 +44,7 @@
 			</div>
 			
 			<aside class="right_login">	</aside>
+			<aside class="nav_trigger"></aside>
 			<div class="nav_wrap">
 				<aside class="nav">首页</aside>
 				<aside class="nav active">设计语言</aside>
@@ -63,9 +67,7 @@
         {% block book_body %}
             <div class="body-inner">
                 {% block book_inner %}
-                
-                	<!--toggle-->
-                    {% include "website/header.html" %}
+                	
 
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
