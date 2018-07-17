@@ -29,7 +29,7 @@ function hiddenAll(e){
 // Bind all dropdown
 function init() {
 	
-	$("a").attr("target","_self");
+//	$("a").attr("target","_self");
 	
 	$(document).on('click', '.nav_wrap .nav', tabNav);
 
