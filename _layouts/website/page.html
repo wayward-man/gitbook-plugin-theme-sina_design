@@ -31,8 +31,13 @@
 	
 	<!--自定义的头部-->
 	<div class="sinaTop">
+		<!--移动端代替sidebar-->
+		
 		<!--toggle-->
-        {% include "website/header.html" %}
+		<div class="header_bar">
+			<aside class="btn_bar"></aside>
+			{% include "website/header.html" %}
+		</div>
         
 		<div class="left">
 			<aside class="logo"></aside>			

@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var gitbook = window.gitbook;
 
 function tabNav() {
 	
@@ -26,13 +27,18 @@ function hiddenAll(e){
 	$(".nav_wrap").removeClass('show');
 }
 
+function toggleIcon(e){
+	var status = gitbook.storage.get('sidebar', true);
+	$(".btn_bar").toggleClass('close', status)
+}
+
+
 // Bind all dropdown
 function init() {
-	
-//	$("a").attr("target","_self");
+	$(document).on('click', '.header_bar', toggleIcon);
 	
 	$(document).on('click', '.nav_wrap .nav', tabNav);
-
+	
 	//移动端事件
 	$(document).on('click', '.sina_searchBox', showSearch);
 	//移动端事件
