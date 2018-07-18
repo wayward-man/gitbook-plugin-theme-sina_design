@@ -32,6 +32,12 @@ function toggleIcon(e){
 	$(".btn_bar").toggleClass('close', status)
 }
 
+function  toggleChapter(){
+	$(this).closest('li').toggleClass("expanded");
+}
+
+
+
 
 // Bind all dropdown
 function init() {
@@ -45,6 +51,11 @@ function init() {
 	$(document).on('click', '.nav_trigger', showNavWrap);
 	
 	$(document).on('click','.book-body',hiddenAll);
+	
+//	$(document).on('click','.summary>li>a',toggleChapter);
+	
+	//清空一级目录的导航
+	$('.summary>li>a').attr("href","");
 
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {

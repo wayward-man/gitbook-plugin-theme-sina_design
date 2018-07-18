@@ -3,6 +3,7 @@ var keyboard =   require('./keyboard');
 var navigation = require('./navigation');
 var sidebar =    require('./sidebar');
 var toolbar =    require('./toolbar');
+var expand = require('./sina_expandable.js');
 var sina = require('./sina.js');
 
 var gitbook = window.gitbook;
@@ -23,6 +24,7 @@ function init() {
 	// Init Sina Event
 	sina.init();
 
+	expand.init();
 
     // Add action to toggle sidebar
     toolbar.createButton({
