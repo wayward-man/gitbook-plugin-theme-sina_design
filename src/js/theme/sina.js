@@ -36,9 +36,6 @@ function  toggleChapter(){
 	$(this).closest('li').toggleClass("expanded");
 }
 
-
-
-
 // Bind all dropdown
 function init() {
 	$(document).on('click', '.header_bar', toggleIcon);
@@ -55,7 +52,7 @@ function init() {
 //	$(document).on('click','.summary>li>a',toggleChapter);
 	
 	//清空一级目录的导航
-	$('.summary>li>a').attr("href","");
+//	$('.summary>li>a').attr("href","");
 
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {

@@ -3457,7 +3457,7 @@ table {
 	display: block;
 	padding: 10px 15px;
 	border-bottom: none;
-	color: #364149;
+	color: #000;
 	background: 0 0;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -3479,7 +3479,6 @@ table {
 	color: #188FFF;
 	background: #E5F2FF;
 	text-decoration: none;
-	border-right:3px solid #188FFF;
 }
 
 .book-summary ul.summary li ul {

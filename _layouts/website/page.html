@@ -40,11 +40,13 @@
 		</div>
         
 		<div class="left">
-			<aside class="logo"></aside>			
+			<aside class="logo"></aside>
+			<aside class="bg_line"></aside>
 		</div>
 		<div class="right">
 			<div class="sina_searchBox">
-				<i class="fa fa-search"></i>
+				<aside class="btn_search"></aside>
+				<!--<i class="fa fa-search"></i>-->
 				{% block search_input %}{% endblock %}	
 			</div>
 			
@@ -58,6 +60,7 @@
 		</div>
 	</div>
 	
+	<!--左侧目录-->
     <div class="book-summary">
         {% block book_sidebar %}
             {% block book_summary %}
@@ -68,14 +71,15 @@
         {% endblock %}
     </div>
 
+	<!--markdown 文档-->
     <div class="book-body">
         {% block book_body %}
             <div class="body-inner">
                 {% block book_inner %}
                 	
-
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
+                        	
                             {% block search_results %}
                                 <section class="normal markdown-section">
                                 {% block page %}
@@ -88,14 +92,14 @@
 				            {% block book_navigation %}
 				                {% if page.previous and page.previous.path %}
 				                <a href="{{ page.previous.path|resolveFile }}{{ page.previous.anchor }}" class="navigation navigation-prev {% if not (page.next and page.next.path) %}navigation-unique{% endif %}" aria-label="Previous page: {{ page.previous.title }}">
-				                    <i class="fa fa-angle-left"></i>
+				                    <!--<i class="fa fa-angle-left"></i>-->
 				                    {{ page.previous.title }}
 				                </a>
 				                {% endif %}
 				                {% if page.next and page.next.path %}
 				                <a href="{{ page.next.path|resolveFile }}{{ page.next.anchor }}" class="navigation navigation-next {% if not (page.previous and page.previous.path) %}navigation-unique{% endif %}" aria-label="Next page: {{ page.next.title }}">
 				                	{{ page.next.title }}
-				                	<i class="fa fa-angle-right"></i>
+				                	<!--<i class="fa fa-angle-right"></i>-->
 				                </a>
 				                {% endif %}
 				            {% endblock %}

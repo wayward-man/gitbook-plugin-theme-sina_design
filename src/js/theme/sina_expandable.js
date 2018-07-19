@@ -10,11 +10,12 @@ var _init = function() {
 	// adding the trigger element to each ARTICLES parent and binding the event
 	$(ARTICLES)
 		.parent(CHAPTER)
-		.children('a,span')
+//		.children('a,span')
+		.children('span')
 		.append(TRIGGER_TEMPLATE)
 		.on('click', function(e) {
 //			if(!$(e.target).is('a')) {
-				e.preventDefault();
+//				e.preventDefault();
 				e.stopPropagation();
 				toggle($(e.target).closest(CHAPTER));
 //			}
