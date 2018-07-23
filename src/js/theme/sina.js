@@ -49,9 +49,9 @@ function init() {
 	$(document).on('click', '.nav_wrap .nav', tabNav);
 
 	//移动端事件
-	$(document).on('touchstart', '.sinaTop .sina_searchBox', showSearch);
-	$(document).on('touchstart', '.searchWrap .btn_cancel', cancelResult);
-	$(document).on('touchstart', '.sinaTop .nav_trigger', showNavWrap);
+	$(document).on('touchstart click', '.sinaTop .sina_searchBox', showSearch);
+	$(document).on('touchstart click', '.searchWrap .btn_cancel', cancelResult);
+	$(document).on('touchstart click', '.sinaTop .nav_trigger', showNavWrap);
 
 	$(document).on('click', '.book-body', hiddenAll);
 
