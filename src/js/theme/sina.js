@@ -12,13 +12,13 @@ function tabNav() {
 }
 
 function showSearch() {
-	console.log('*********toggle***********')
 	$(".searchWrap").addClass('show');
+	return false;
 }
 
 function showNavWrap() {
-	console.log('*********toggle***********' + $(".nav_wrap"))
 	$(".nav_wrap").addClass('show');
+	return false;
 }
 
 //隐藏所有 弹窗
@@ -45,19 +45,15 @@ function init() {
 	$(".page-wrapper").append('<aside class="bottom_logn"></aside>');
 	console.log($(".page-wrapper"))
 
-	$(document).on('click', '.searchWrap .btn_cancel', cancelResult);
-
 	$(document).on('click', '.header_bar', toggleIcon);
-
 	$(document).on('click', '.nav_wrap .nav', tabNav);
 
 	//移动端事件
-	$(document).on('click', '.sina_searchBox', showSearch);
-	//移动端事件
-	$(document).on('click', '.nav_trigger', showNavWrap);
+	$(document).on('touchstart', '.sinaTop .sina_searchBox', showSearch);
+	$(document).on('touchstart', '.searchWrap .btn_cancel', cancelResult);
+	$(document).on('touchstart', '.sinaTop .nav_trigger', showNavWrap);
 
 	$(document).on('click', '.book-body', hiddenAll);
-
 
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {
