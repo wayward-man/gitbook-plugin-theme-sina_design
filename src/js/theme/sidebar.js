@@ -14,8 +14,6 @@ function toggleSidebar(_state, animation) {
 	gitbook.state.$book.toggleClass('with-summary', _state);
 
 	gitbook.storage.set('sidebar', isOpen());
-
-	console.log("***sidebar is *****" + _state);
 }
 
 // Return true if sidebar is open

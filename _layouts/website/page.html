@@ -47,7 +47,11 @@
 			<div class="sina_searchBox">
 				<aside class="btn_search"></aside>
 				<!--<i class="fa fa-search"></i>-->
-				{% block search_input %}{% endblock %}	
+				<div class="searchWrap">
+					<aside class="icon_search"></aside>
+					{% block search_input %}{% endblock %}
+					<aside class="btn_cancel">取消</aside>
+				</div>
 			</div>
 			
 			<aside class="right_login">	</aside>

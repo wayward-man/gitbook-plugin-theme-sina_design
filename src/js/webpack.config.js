@@ -1,5 +1,3 @@
-const uglify = require('uglifyjs-webpack-plugin');
-
 module.exports = {
 	entry:{
       theme:__dirname + "/theme/index.js",//已多次提及的唯一入口文件  
@@ -30,8 +28,5 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
-    },
-  plugins:[
-        new uglify()
-    ]
+    }
 };

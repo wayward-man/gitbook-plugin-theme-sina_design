@@ -2,7 +2,7 @@ var $ = require('jquery');
 var gitbook = window.gitbook;
 
 function tabNav() {
-	
+
 	//移动端移除 show 类
 	hiddenAll();
 
@@ -13,46 +13,51 @@ function tabNav() {
 
 function showSearch() {
 	console.log('*********toggle***********')
-	$("#book-search-input").addClass('show');
+	$(".searchWrap").addClass('show');
 }
 
 function showNavWrap() {
-	console.log('*********toggle***********'  + $(".nav_wrap"))
+	console.log('*********toggle***********' + $(".nav_wrap"))
 	$(".nav_wrap").addClass('show');
 }
 
 //隐藏所有 弹窗
-function hiddenAll(e){
-	$("#book-search-input").removeClass('show');
+function hiddenAll(e) {
 	$(".nav_wrap").removeClass('show');
 }
 
-function toggleIcon(e){
+function toggleIcon(e) {
 	var status = gitbook.storage.get('sidebar', true);
 	$(".btn_bar").toggleClass('close', status)
 }
 
-function  toggleChapter(){
-	$(this).closest('li').toggleClass("expanded");
+function cancelResult() {
+	$('#book-search-results').removeClass('open');
+	$("#book-search-input input").val("")
+	$(".searchWrap").removeClass('show');
+	return false;
 }
 
 // Bind all dropdown
 function init() {
+	window.onload = function() {}
+	//底部logo
+	$(".page-wrapper").append('<aside class="bottom_logn"></aside>');
+	console.log($(".page-wrapper"))
+
+	$(document).on('click', '.searchWrap .btn_cancel', cancelResult);
+
 	$(document).on('click', '.header_bar', toggleIcon);
-	
+
 	$(document).on('click', '.nav_wrap .nav', tabNav);
-	
+
 	//移动端事件
 	$(document).on('click', '.sina_searchBox', showSearch);
 	//移动端事件
 	$(document).on('click', '.nav_trigger', showNavWrap);
-	
-	$(document).on('click','.book-body',hiddenAll);
-	
-//	$(document).on('click','.summary>li>a',toggleChapter);
-	
-	//清空一级目录的导航
-//	$('.summary>li>a').attr("href","");
+
+	$(document).on('click', '.book-body', hiddenAll);
+
 
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {
@@ -61,6 +66,17 @@ function init() {
 		var $this = $('.nav_wrap .nav').eq(curInex);
 		$this.siblings().removeClass("active");
 		$this.addClass("active");
+
+		//如果该页面没有 底部logo
+		var $page = $(".page-wrapper");
+		if($page.children('.bottom_logn').length > 0) {
+			return
+		} else {
+			$page.append('<aside class="bottom_logn"></aside>');
+			console.log("*********************");
+			console.log("添加bottom_login");
+			console.log("*********************");
+		}
 	});
 }
 
