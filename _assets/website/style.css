@@ -3915,18 +3915,9 @@ table {
 }
 
 .navigation {
-	position: absolute;
-	bottom: 0;
-	margin: 0;
-	max-width: 150px;
-	min-width: 90px;
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	flex-direction: column;
-	font-size: 40px;
-	color: #ccc;
-	text-align: center;
 	-webkit-transition: all 350ms ease;
 	-moz-transition: all 350ms ease;
 	-o-transition: all 350ms ease;
@@ -3946,20 +3937,6 @@ table {
 	left: 0
 }
 
-@media (max-width:1240px) {
-	.navigation {
-		position: static;
-		top: auto;
-		max-width: 50%;
-		width: 50%;
-		display: inline-block;
-		float: left
-	}
-	.navigation.navigation-unique {
-		max-width: 100%;
-		width: 100%
-	}
-}
 
 #book-search-input {
 	display: inline-block;
