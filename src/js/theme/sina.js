@@ -11,9 +11,9 @@ function tabNav() {
 	gitbook.storage.set("navIndex", $(this).index());
 }
 
-function showSearch() {
+function showSearch(e) {
 	$(".searchWrap").addClass('show');
-	return false;
+	e.stopPropagation();
 }
 
 function showNavWrap() {
@@ -38,6 +38,14 @@ function cancelResult() {
 	return false;
 }
 
+function removePlaceholder(){
+	$(this).attr('placeholder','');
+}
+
+function showPlaceholder(){
+	$(this).attr('placeholder','输入并搜索');
+}
+
 // Bind all dropdown
 function init() {
 	window.onload = function() {}
@@ -52,6 +60,8 @@ function init() {
 	$(document).on('touchend click', '.sinaTop .sina_searchBox', showSearch);
 	$(document).on('touchend click', '.searchWrap .btn_cancel', cancelResult);
 	$(document).on('touchend click', '.sinaTop .nav_trigger', showNavWrap);
+	$(document).on('focus', '#book-search-input input', removePlaceholder)
+	$(document).on('blur',  '#book-search-input input', showPlaceholder)
 
 	$(document).on('click', '.book-body', hiddenAll);
 
