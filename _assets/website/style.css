@@ -3518,7 +3518,7 @@ table {
 
 @media (max-width:600px) {
 	.book.with-summary {
-		overflow: hidden
+		/*overflow: hidden*/
 	}
 	.book.with-summary .book-body {
 		-webkit-transform: translate(calc(100% - 60px), 0);

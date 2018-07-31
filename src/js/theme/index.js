@@ -39,6 +39,7 @@ function init() {
 
 gitbook.events.on('start', init);
 
+
 gitbook.keyboard = keyboard;
 gitbook.navigation = navigation;
 gitbook.sidebar = sidebar;

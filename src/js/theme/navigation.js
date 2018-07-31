@@ -25,7 +25,7 @@ function getScroller() {
 function scrollToHash(hash) {
     var $scroller = getScroller(),
         dest = 0;
-
+		
     // Don't try to scroll if element doesn't exist
     if (!pageHasElement(hash)) {
         return;
@@ -33,10 +33,20 @@ function scrollToHash(hash) {
 
     if (hash) {
         dest = getElementTopPosition(hash);
+        
+        //跳转锚点的时候，添加颜色变化
+        setTimeout(function(){
+        	$(''+hash).addClass('active');
+        },1000)
+        
+        setTimeout(function(){
+        	$(''+hash).removeClass("active");
+        },2000)
     }
-
+	
     // Unbind scroll detection
     $scroller.unbind('scroll');
+    
     $scroller.animate({
         scrollTop: dest
     }, 800, 'swing', function() {
@@ -187,7 +197,8 @@ function handleScrolling() {
     $($chapters.get().reverse()).each(function(index) {
         var titleId = getChapterHash($(this)),
             titleTop;
-
+		
+		console.log(titleId);
         if (!!titleId && !$chapter) {
             titleTop = getElementTopPosition(titleId);
 

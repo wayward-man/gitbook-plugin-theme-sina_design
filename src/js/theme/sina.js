@@ -1,28 +1,29 @@
 var $ = require('jquery');
 var gitbook = window.gitbook;
 
-function tabNav() {
+function tabNav(e) {
 
 	//移动端移除 show 类
 	hiddenAll();
-
 	$(this).siblings().removeClass("active");
 	$(this).addClass("active");
 	gitbook.storage.set("navIndex", $(this).index());
-}
-
-function showSearch(e) {
-	$(".searchWrap").addClass('show');
 	e.stopPropagation();
 }
 
-function showNavWrap() {
+function showSearch(e) {
+	$("#book-search-input input").focus();
+	$(".searchWrap").addClass('show');
+//	e.stopPropagation();
+}
+
+function showNavWrap(e) {
 	$(".nav_wrap").addClass('show');
-	return false;
+	e.stopPropagation();
 }
 
 //隐藏所有 弹窗
-function hiddenAll(e) {
+function hiddenAll() {
 	$(".nav_wrap").removeClass('show');
 }
 
@@ -31,11 +32,11 @@ function toggleIcon(e) {
 	$(".btn_bar").toggleClass('close', status)
 }
 
-function cancelResult() {
+function cancelResult(event) {
 	$('#book-search-results').removeClass('open');
 	$("#book-search-input input").val("")
 	$(".searchWrap").removeClass('show');
-	return false;
+	 event.stopPropagation();
 }
 
 function removePlaceholder(){
@@ -63,26 +64,15 @@ function init() {
 	$(document).on('focus', '#book-search-input input', removePlaceholder)
 	$(document).on('blur',  '#book-search-input input', showPlaceholder)
 
-	$(document).on('click', '.book-body', hiddenAll);
+	$(document).on('click', '.book', hiddenAll);
 
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {
+		//顶部导航
 		var curInex = gitbook.storage.get("navIndex");
-		console.log(curInex);
 		var $this = $('.nav_wrap .nav').eq(curInex);
 		$this.siblings().removeClass("active");
 		$this.addClass("active");
-
-		//如果该页面没有 底部logo
-		var $page = $(".page-wrapper");
-		if($page.children('.bottom_logn').length > 0) {
-			return
-		} else {
-			$page.append('<aside class="bottom_logn"></aside>');
-			console.log("*********************");
-			console.log("添加bottom_login");
-			console.log("*********************");
-		}
 	});
 }
 
