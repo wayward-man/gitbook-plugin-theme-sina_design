@@ -1,4 +1,5 @@
 module.exports = {
+	mode:"production",
 	entry:{
       theme:__dirname + "/theme/index.js",//已多次提及的唯一入口文件  
       gitbook: __dirname + "/core/index.js",//已多次提及的唯一入口文件  

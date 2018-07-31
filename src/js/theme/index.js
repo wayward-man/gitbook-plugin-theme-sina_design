@@ -9,7 +9,8 @@ var sina = require('./sina.js');
 var gitbook = window.gitbook;
 
 function init() {
-
+	
+	
     sidebar.init();
 
     // Init keyboard
