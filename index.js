@@ -1,7 +1,6 @@
 
 module.exports = {
     hooks: {
-    	
 		init:function(){
 			console.log('******* SINA INIT ***************');
 		},		
