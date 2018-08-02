@@ -57,6 +57,12 @@ function cancelResult(event) {
 	event.stopPropagation();
 }
 
+
+function toggleInnerTab(){
+	$('.fixedLink').toggleClass("show");
+	return false;
+}
+
 //控制侧栏的 拉开或者 展开
 function toggleSidebar(_state, animation) {
 	if(gitbook.state != null && isOpen() == _state) return;
@@ -102,6 +108,9 @@ function init() {
 	$(document).on('touchend click', '.sinaTop .nav_trigger', showNavWrap);
 	$(document).on('focus', '#book-search-input input', removePlaceholder)
 	$(document).on('blur', '#book-search-input input', showPlaceholder)
+	
+	//文章内 导航
+	$(document).on('touchend click', '.btn_summary', toggleInnerTab);
 
 	$(document).on('click', '.book', hiddenAll);
 
@@ -115,13 +124,18 @@ function init() {
 
 		var $headers = $("h2:header,h3:header,h4:header");
 		var $fixedLink = $(".fixedLink");
-
+		
 		for(var i = 0; i < $headers.length; i++) {
 			var inner = $headers.eq(i).html();
 			var formateInner = inner.toLocaleLowerCase();
 			var className = $headers[i].tagName;
 
 			if(i === 0) {
+				
+				var strTop = '<a href="#' + formateInner + '" ></a>';
+				
+				$(".btn_toTop").append($(strTop));
+				
 				var str = '<a href="#' + formateInner + '" class="active ' + className + '" >' + inner + '</a> ';
 			}else{
 				var str = '<a href="#' + formateInner + '" class="' + className + '" >' + inner + '</a> ';
