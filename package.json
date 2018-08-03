@@ -1,8 +1,8 @@
 {
   "name": "gitbook-plugin-theme-sina_design",
-  "description": "sina design_book",
+  "description": "整体 ok",
   "main": "./index.js",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "engines": {
     "gitbook": ">=3.0.0"
   },

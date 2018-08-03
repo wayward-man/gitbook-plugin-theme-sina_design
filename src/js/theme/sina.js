@@ -8,13 +8,49 @@ function isOpen() {
 
 }
 
+//设置书签
+function setSummary(curIndex) {
+
+	var $dividers = $("li.divider");
+
+	//curIndex = 0;
+	var $page_Index = $("li.divider").eq(0).prevAll();
+	var $page_Index_not = $("li.divider").eq(0).nextAll();
+
+	//curIndex = 2;
+	var $page_brand = $("li.divider").eq(1).nextAll();
+	var $page_brand_not = $("li.divider").eq(1).prevAll();
+
+	//curIndex  = 1;
+	var $page_design = $("li.divider").eq(0).nextUntil("li.divider");
+	var $page_design_not1 = $page_Index;
+	var $page_design_not2 = $page_brand;
+
+	var toggleSpeed = 0;
+
+	$dividers.fadeOut(toggleSpeed / 10);
+	if(curIndex == 0) {
+		$page_Index.fadeIn(toggleSpeed);
+		$page_Index_not.fadeOut(toggleSpeed / 10);
+	} else if(curIndex == 1) {
+		$page_design.fadeIn(toggleSpeed);
+		$page_design_not1.fadeOut(toggleSpeed / 10);
+		$page_design_not2.fadeOut(toggleSpeed / 10);
+	} else if(curIndex == 2) {
+		$page_brand.fadeIn(toggleSpeed);
+		$page_brand_not.fadeOut(toggleSpeed / 10);
+	}
+}
+
+//切换顶部 一级导航
 function tabNav(e) {
+	var curInex = $(this).index();
 	//移动端移除 show 类
 	hiddenAll();
 	$(this).siblings().removeClass("active");
 	$(this).addClass("active");
-	gitbook.storage.set("navIndex", $(this).index());
-
+	gitbook.storage.set("navIndex", curInex);
+	setSummary(curInex);
 	e.stopPropagation();
 }
 
@@ -57,9 +93,8 @@ function cancelResult(event) {
 	event.stopPropagation();
 }
 
-
-function toggleInnerTab(){
-	$('.fixedLink').toggleClass("show");
+function toggleInnerTab() {
+	$('.fixedLink_wrap').toggleClass("show");
 	return false;
 }
 
@@ -91,7 +126,12 @@ function showPlaceholder() {
 
 // Bind all dropdown
 function init() {
-	window.onload = function() {}
+
+	if(!gitbook.storage.get("navIndex")){
+		//初始化 一级目录
+		gitbook.storage.set("navIndex", 1);
+	}
+
 	//底部logo
 	$(".page-wrapper").append('<aside class="bottom_logn"></aside>');
 	console.log($(".page-wrapper"))
@@ -108,7 +148,7 @@ function init() {
 	$(document).on('touchend click', '.sinaTop .nav_trigger', showNavWrap);
 	$(document).on('focus', '#book-search-input input', removePlaceholder)
 	$(document).on('blur', '#book-search-input input', showPlaceholder)
-	
+
 	//文章内 导航
 	$(document).on('touchend click', '.btn_summary', toggleInnerTab);
 
@@ -121,23 +161,24 @@ function init() {
 		var $this = $('.nav_wrap .nav').eq(curInex);
 		$this.siblings().removeClass("active");
 		$this.addClass("active");
+		setSummary(curInex);
 
 		var $headers = $("h2:header,h3:header,h4:header");
 		var $fixedLink = $(".fixedLink");
-		
+
 		for(var i = 0; i < $headers.length; i++) {
 			var inner = $headers.eq(i).html();
 			var formateInner = inner.toLocaleLowerCase();
 			var className = $headers[i].tagName;
 
 			if(i === 0) {
-				
+
 				var strTop = '<a href="#' + formateInner + '" ></a>';
-				
+
 				$(".btn_toTop").append($(strTop));
-				
+
 				var str = '<a href="#' + formateInner + '" class="active ' + className + '" >' + inner + '</a> ';
-			}else{
+			} else {
 				var str = '<a href="#' + formateInner + '" class="' + className + '" >' + inner + '</a> ';
 			}
 			$fixedLink.append($(str));
