@@ -49,9 +49,9 @@
 			<aside class="right_login">	</aside>
 			<aside class="nav_trigger"></aside>
 			<div class="nav_wrap">
-				<aside class="nav">首页</aside>
-				<aside class="nav active">设计语言</aside>
-				<aside class="nav">品牌</aside>
+				<a class="nav" href="#">首页</a>
+				<a class="nav active" href="#">设计语言</a>
+				<a class="nav" href="#">品牌</a>
 			</div>
 		</div>
 	</div>
@@ -104,10 +104,16 @@
     {% endblock %}
 </div>
 
-<div class="fixedLink">
-	<aside class="btn_toTop"></aside>
-</div>
 
+<section class="fixedLink_wrap">
+	<aside class="fixedLink"></aside>	
+	<!--PC回到顶部-->
+<aside class="btn_toTop"></aside>
+</section>
+
+
+
+<!--移动端显示隐藏按钮-->
 <aside class="btn_summary"></aside>
 
 
