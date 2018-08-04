@@ -94,7 +94,7 @@ function cancelResult(event) {
 }
 
 function toggleInnerTab() {
-	$('.fixedLink_wrap').toggleClass("show");
+	$('.fixedLink_wrap,.triangle').toggleClass("show");
 	return false;
 }
 
@@ -149,13 +149,17 @@ function init() {
 	$(document).on('focus', '#book-search-input input', removePlaceholder)
 	$(document).on('blur', '#book-search-input input', showPlaceholder)
 
-	//文章内 导航
+	//控制文章内 导航显示与否
 	$(document).on('touchend click', '.btn_summary', toggleInnerTab);
 
 	$(document).on('click', '.book', hiddenAll);
 
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {
+		//给需要下载的链接 添加 新窗口打开
+		$("a[download]").attr('target','_blank');
+		
+		
 		//顶部导航
 		var curInex = gitbook.storage.get("navIndex");
 		var $this = $('.nav_wrap .nav').eq(curInex);
