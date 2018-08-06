@@ -5,7 +5,6 @@ var platform = require('./platform');
 // Return true if sidebar is open
 function isOpen() {
 	return gitbook.state.$book.hasClass('with-summary');
-
 }
 
 //设置书签
@@ -28,17 +27,23 @@ function setSummary(curIndex) {
 
 	var toggleSpeed = 0;
 
-	$dividers.fadeOut(toggleSpeed / 10);
 	if(curIndex == 0) {
 		$page_Index.fadeIn(toggleSpeed);
 		$page_Index_not.fadeOut(toggleSpeed / 10);
+
+		$(".page_home").fadeIn(toggleSpeed);
+
 	} else if(curIndex == 1) {
 		$page_design.fadeIn(toggleSpeed);
 		$page_design_not1.fadeOut(toggleSpeed / 10);
 		$page_design_not2.fadeOut(toggleSpeed / 10);
+		$(".page_home").fadeOut(toggleSpeed / 10);
+
 	} else if(curIndex == 2) {
 		$page_brand.fadeIn(toggleSpeed);
 		$page_brand_not.fadeOut(toggleSpeed / 10);
+		$(".page_home").fadeOut(toggleSpeed / 10);
+
 	}
 }
 
@@ -116,6 +121,12 @@ function tabInnerNav() {
 	$(this).addClass('active');
 }
 
+//首页链接跳转
+function changePage() {
+	var curIndex = Number($(this).index()) + 1;
+	gitbook.storage.set("navIndex", curIndex);
+}
+
 function removePlaceholder() {
 	$(this).attr('placeholder', '');
 }
@@ -127,27 +138,25 @@ function showPlaceholder() {
 // Bind all dropdown
 function init() {
 
-	if(!gitbook.storage.get("navIndex")){
+	if(!gitbook.storage.get("navIndex")) {
 		//初始化 一级目录
-		gitbook.storage.set("navIndex", 1);
+		gitbook.storage.set("navIndex", 0);
 	}
-
-	//底部logo
-	$(".page-wrapper").append('<aside class="bottom_logn"></aside>');
-	console.log($(".page-wrapper"))
 
 	$(document).on('click', '.header_bar', toggleIcon);
 	$(document).on('click', '.nav_wrap .nav', tabNav);
-
 	//文章内导航
 	$(document).on('blur', '.fixedLink a', tabInnerNav)
-
 	//移动端事件
 	$(document).on('touchend click', '.sinaTop .sina_searchBox', showSearch);
 	$(document).on('touchend click', '.searchWrap .btn_cancel', cancelResult);
 	$(document).on('touchend click', '.sinaTop .nav_trigger', showNavWrap);
 	$(document).on('focus', '#book-search-input input', removePlaceholder)
 	$(document).on('blur', '#book-search-input input', showPlaceholder)
+
+	//首页链接跳转
+	$(document).on('touchend click', '.pc_wrap .btn_wrap .btn', changePage);
+	$(document).on('touchend click', '.mobile_wrap  .btn_wrap .btn', changePage);
 
 	//控制文章内 导航显示与否
 	$(document).on('touchend click', '.btn_summary', toggleInnerTab);
@@ -157,17 +166,18 @@ function init() {
 	//页面跳转的时候 切换tab
 	gitbook.events.on('page.change', function() {
 		//给需要下载的链接 添加 新窗口打开
-		$("a[download]").attr('target','_blank');
-		
-		
+		$("a[download]").attr('target', '_blank');
+
 		//顶部导航
 		var curInex = gitbook.storage.get("navIndex");
 		var $this = $('.nav_wrap .nav').eq(curInex);
 		$this.siblings().removeClass("active");
 		$this.addClass("active");
+		
 		setSummary(curInex);
-
-		var $headers = $("h2:header,h3:header,h4:header");
+		
+		//业内导航
+		var $headers = $(".markdown-section > h2:header, .markdown-section > h3:header,.markdown-section > h4:header");
 		var $fixedLink = $(".fixedLink");
 
 		for(var i = 0; i < $headers.length; i++) {
@@ -176,11 +186,8 @@ function init() {
 			var className = $headers[i].tagName;
 
 			if(i === 0) {
-
 				var strTop = '<a href="#' + formateInner + '" ></a>';
-
 				$(".btn_toTop").append($(strTop));
-
 				var str = '<a href="#' + formateInner + '" class="active ' + className + '" >' + inner + '</a> ';
 			} else {
 				var str = '<a href="#' + formateInner + '" class="' + className + '" >' + inner + '</a> ';
